@@ -223,6 +223,9 @@ function PoliceCall()
         end
         local msg = "Parking meter robbery " .. gender .." at " .. streetLabel
         TriggerServerEvent("police:server:ParkingRobberyCall", pos, msg, gender, streetLabel)
+        local data = {displayCode = '211', description = 'Robbery', isImportant = 0, recipientList = {'police'}, length = '10000', infoM = 'fa-info-circle', info = 'Parking Meter Robbery'}
+        local dispatchData = {dispatchData = data, caller = 'Alarm', streetLabel}
+        TriggerEvent('wf-alerts:svNotify', dispatchData, gender)
         print("alert")
     end
 end
